@@ -76,8 +76,10 @@ export default function Detailed(props) {
               <Advert />
               <div className="detailed-nav comm-box">
                 <Affix offsetTop={5}>
-                  <div className="nav-title">Blog directory</div>
+                  <div>
+                    <div className="nav-title">Blog directory</div>
                     {tocify&&tocify.render()}
+                  </div>
                 </Affix>
               </div>
           </Col>
