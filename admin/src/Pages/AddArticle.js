@@ -156,6 +156,7 @@ function AddArticle(props) {
           <Row gutter={10}>
             <Col span={20}>
               <Input
+                className="article-title"
                 value={articleTitle}
                 onChange={(e) => setArticleTitle(e.target.value)}
                 placeholder="Blog title"
@@ -200,12 +201,6 @@ function AddArticle(props) {
         <Col span={6}>
           <Row>
             <Col span={24}>
-              <Button size="large">Save</Button>
-              <Button type="primary" size="large" onClick={saveArticle}>
-                Publish
-              </Button>
-            </Col>
-            <Col span={24}>
               <div className="date-select">
                 <DatePicker
                   onChange={(date, dateString) => {
@@ -216,6 +211,9 @@ function AddArticle(props) {
                   value={moment(showDate)}
                 />
               </div>
+              <Button type="primary" size="large" onClick={saveArticle}>
+                Publish
+              </Button>
             </Col>
             <Col span={24}>
               <TextArea

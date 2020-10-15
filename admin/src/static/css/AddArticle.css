@@ -44,12 +44,13 @@
     background-color: #f8f8f8;
 }
 .introduce-html{
+    overflow: auto;
+    margin-top: 10px;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 16px;
     background-color: #f0f0f0;
-    overflow: auto;
 }
 .introduce-html h1 {
     font-size: 30px;
@@ -83,6 +84,14 @@
     padding: 10px 10px 10px 30px; 
     background-color: #f8f8f8;
 }
+.article-title {
+    margin-bottom: 10px;
+}
 .date-select {
-    margin-top: 10px;
+    display: inline-block;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+.ant-select {
+    width: 100%;
 }
