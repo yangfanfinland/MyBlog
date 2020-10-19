@@ -4,8 +4,7 @@ import {
   PieChartOutlined,
   FileOutlined,
   MenuUnfoldOutlined,
-  MenuFoldOutlined,
-  RightCircleFilled,
+  MenuFoldOutlined
 } from "@ant-design/icons";
 import "../static/css/AdminIndex.css";
 import { Route } from "react-router-dom";

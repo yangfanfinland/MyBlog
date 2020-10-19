@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "antd/dist/antd.css";
-import { Card, Input, Button, Spin, message } from "antd";
+import { Card, Input, Button, Spin, message, Avatar } from "antd";
 import { UserOutlined, KeyOutlined } from "@ant-design/icons";
-import axios from 'axios'
+import axios from "axios";
 import "../static/css/Login.css";
-import  servicePath  from '../config/apiUrl'
+import servicePath from "../config/apiUrl";
+const { Meta } = Card;
 
 function Login(props) {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {}, []);
 
   const checkLogin = () => {
     setIsLoading(true);
@@ -50,10 +49,17 @@ function Login(props) {
     <div className="login-div">
       <Spin tip="Loading..." spinning={isLoading}>
         <Card
-          title="Yang Fan Blog System"
+          title="Blog Manager"
           bordered={true}
           style={{ width: 400 }}
         >
+          <Meta
+            avatar={
+              <Avatar src="https://media-exp1.licdn.com/dms/image/C4D03AQEh3bBI4WTEhQ/profile-displayphoto-shrink_400_400/0?e=1607558400&v=beta&t=Q885925EJc6fv1BciFUTHfpRjvmcI8FmPC_aNT23KHc" />
+            }
+            title="Fan Yang"
+            style={{marginBottom: "10px"}}
+          />
           <Input
             id="userName"
             size="large"
@@ -62,6 +68,7 @@ function Login(props) {
             onChange={(e) => {
               setUserName(e.target.value);
             }}
+            style={{ marginBottom: "10px" }}
           />
           <Input.Password
             id="password"
@@ -71,8 +78,12 @@ function Login(props) {
             onChange={(e) => {
               setPassword(e.target.value);
             }}
+            style={{ marginBottom: "10px" }}
           />
-          <Button type="primary" size="large" block onClick={checkLogin} > Login in </Button>
+          <Button type="primary" size="large" block onClick={checkLogin}>
+            {" "}
+            Login in{" "}
+          </Button>
         </Card>
       </Spin>
     </div>
