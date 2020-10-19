@@ -15,6 +15,7 @@ import Tocify from '../components/tocify.tsx'
 import servicePath from '../config/apiUrl'
 
 export default function Detailed(props) {
+  debugger
   const tocify = new Tocify()
   const renderer = new marked.Renderer()
 
@@ -51,8 +52,8 @@ export default function Detailed(props) {
               <div className="bread-div">
                 <Breadcrumb>
                   <Breadcrumb.Item><a href="/">Home</a></Breadcrumb.Item>
-                  <Breadcrumb.Item><a href="/">Project</a></Breadcrumb.Item>
-                  <Breadcrumb.Item>xxx</Breadcrumb.Item>
+                  <Breadcrumb.Item><a href={"/list?id="+props.type_id}>{props.type.typeName}</a></Breadcrumb.Item>
+                  <Breadcrumb.Item>{props.title}</Breadcrumb.Item>
                 </Breadcrumb>
               </div>
               <div>

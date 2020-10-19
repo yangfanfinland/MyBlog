@@ -163,7 +163,7 @@ class ArticleList extends React.Component {
         ...this.getColumnSearchProps("createdAt"),
       },
       {
-        title: "view count",
+        title: "View count",
         dataIndex: "view_count",
         key: "view_count",
         ...this.getColumnSearchProps("view_count"),

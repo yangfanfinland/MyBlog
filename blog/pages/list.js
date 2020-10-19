@@ -53,12 +53,12 @@ export default function MyList(list) {
                 <Breadcrumb.Item>
                   <a href="/">Home</a>
                 </Breadcrumb.Item>
-                <Breadcrumb.Item>Project</Breadcrumb.Item>
+                <Breadcrumb.Item>{list.data && list.data[0].type.typeName}</Breadcrumb.Item>
               </Breadcrumb>
             </div>
 
             <List
-              header={<div>Latest blog</div>}
+              // header={<div>Latest blog</div>}
               itemLayout="vertical"
               dataSource={mylist}
               renderItem={(item) => (
