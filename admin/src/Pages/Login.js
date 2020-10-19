@@ -1,12 +1,10 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect } from "react";
 import "antd/dist/antd.css";
 import { Card, Input, Button, Spin, message } from "antd";
 import { UserOutlined, KeyOutlined } from "@ant-design/icons";
 import axios from 'axios'
 import "../static/css/Login.css";
 import  servicePath  from '../config/apiUrl'
-
-const openIdContext = createContext()
 
 function Login(props) {
   const [userName, setUserName] = useState("");
@@ -35,10 +33,8 @@ function Login(props) {
       data: dataProps,
       withCredentials: true,
     }).then((res) => {
-      console.log(res.data);
       setIsLoading(false);
-      if (res.data.data == "Login succeed") {
-        localStorage.setItem("openId", res.data.openId);
+      if (res.data.errno === 0) {
         props.history.push("/index");
       } else {
         message.error("Wrong username or password");

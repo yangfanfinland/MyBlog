@@ -56,11 +56,10 @@ function AddArticle(props) {
   const getTypeInfo = () => {
     axios({
       method: "GET",
-      url: servicePath.getTypeInfo,
+      url: servicePath.getTypeList,
       withCredentials: true,
     }).then((res) => {
-      if (res.data.data == "Login first") {
-        localStorage.removeItem("openId");
+      if (res.data.errno === 10005 && res.data.message === "Not login") {
         props.history.push("/Login");
       } else {
         setTypeInfo(res.data.data);
@@ -108,8 +107,8 @@ function AddArticle(props) {
         data: dataProps,
         withCredentials: true,
       }).then((res) => {
-        setArticleId(res.data.insertId);
-        if (res.data.isSuccess) {
+        if (res.data.errno === 0) {
+          setArticleId(res.data.data.id);
           message.success("Save article succeed");
         } else {
           message.error("Save article failed");
@@ -123,7 +122,7 @@ function AddArticle(props) {
         data: dataProps,
         withCredentials: true,
       }).then((res) => {
-        if (res.data.isSuccess) {
+        if (res.data.errno === 0) {
           message.success("Update article succeed");
         } else {
           message.error("Update article failed");
@@ -135,16 +134,16 @@ function AddArticle(props) {
   const getArticleById = (id) => {
     axios(`${servicePath.getArticleById}/${id}`, {withCredentials: true}).then(
       res => {
-        const articleInfo = res.data.data[0]
+        const articleInfo = res.data.data
         setArticleTitle(articleInfo.title)
-        setArticleContent(articleInfo.articleContent)
-        const html = marked(articleInfo.articleContent)
+        setArticleContent(articleInfo.article_content)
+        const html = marked(articleInfo.article_content)
         setMarkdownContent(html)
         setIntroducemd(articleInfo.introduce)
         const tmpIntroduce = marked(articleInfo.introduce)
         setIntroducehtml(tmpIntroduce)
         setShowDate(articleInfo.addTime)
-        setSelectType(articleInfo.typeId)
+        setSelectType(articleInfo.type_id)
       }
     )
   }

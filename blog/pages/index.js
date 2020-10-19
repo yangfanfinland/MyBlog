@@ -24,7 +24,7 @@ export default function Home(list) {
     gfm: true,
     pedantic: false,
     sanitize: false,
-    tables: true,
+    // tables: true,
     breaks: false,
     smartLists: true,
     highlight: function(code) {
@@ -54,8 +54,8 @@ export default function Home(list) {
                   </div>
                   <div className="list-icon">
                     <span><CalendarOutlined /> {item.addTime}</span>
-                    <span><StarOutlined /> {item.typeName}</span>
-                    <span><FireOutlined /> {item.viewCount} views</span>
+                    <span><StarOutlined /> {item.type.typeName}</span>
+                    <span><FireOutlined /> {item.view_count} views</span>
                   </div>
                   <div className="list-context"
                     dangerouslySetInnerHTML={{__html: marked(item.introduce)}}

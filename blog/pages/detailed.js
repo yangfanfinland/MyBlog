@@ -36,7 +36,7 @@ export default function Detailed(props) {
     }
   })
 
-  const html = marked(props.articleContent)
+  const html = marked(props.article_content)
 
   return (
     <div>
@@ -61,8 +61,8 @@ export default function Detailed(props) {
                 </div>
                 <div className="list-icon center">
                   <span><CalendarOutlined /> {props.addTime}</span>
-                  <span><FolderOutlined /> {props.typeName}</span>
-                  <span><FireOutlined /> {props.viewCount} views</span>
+                  <span><FolderOutlined /> {props.type.typeName}</span>
+                  <span><FireOutlined /> {props.view_count} views</span>
                 </div>
                 <div className="detailed-content"
                   dangerouslySetInnerHTML={{__html: html}}
@@ -95,7 +95,9 @@ Detailed.getInitialProps = async (context) => {
   const promise = new Promise((resolve) => {
     axios(`${servicePath.getArticleById}/${id}`).then(
       (res) => {
-        resolve(res.data.data[0])
+        if (res.data.errno === 0) {
+          resolve(res.data.data)
+        }
       }
     )
   })
