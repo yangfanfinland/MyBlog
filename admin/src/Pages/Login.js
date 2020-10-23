@@ -12,7 +12,7 @@ function Login(props) {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const checkLogin = () => {
+  const login = () => {
     setIsLoading(true);
 
     if (!userName) {
@@ -28,7 +28,7 @@ function Login(props) {
     };
     axios({
       method: "post",
-      url: servicePath.checkLogin,
+      url: servicePath.login,
       data: dataProps,
       withCredentials: true,
     }).then((res) => {
@@ -80,7 +80,7 @@ function Login(props) {
             }}
             style={{ marginBottom: "10px" }}
           />
-          <Button type="primary" size="large" block onClick={checkLogin}>
+          <Button type="primary" size="large" block onClick={login}>
             {" "}
             Login in{" "}
           </Button>

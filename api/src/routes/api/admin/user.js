@@ -4,7 +4,8 @@
  */
 
 const router = require("koa-router")();
-const { loginAction, registerAction } = require('../../../controller/user')
+const { loginAction, registerAction, logoutAction } = require('../../../controller/user')
+const { loginCheck } = require('../../../middlewares/loginChecks')
 
 router.prefix("/api/admin/user");
 
@@ -21,6 +22,11 @@ router.post('/register', async (ctx, next) => {
     userName,
     password
   })
+})
+
+// Logout
+router.post('/logout', loginCheck, async (ctx, next) => {
+  ctx.body = await logoutAction(ctx)
 })
 
 module.exports = router

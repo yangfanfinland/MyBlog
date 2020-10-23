@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Layout, Menu, Tabs, Button } from "antd";
+import { Layout, Menu, Tabs, Button, message } from "antd";
 import {
   PieChartOutlined,
   FileOutlined,
@@ -10,6 +10,8 @@ import "../static/css/AdminIndex.css";
 import { Route } from "react-router-dom";
 import AddArticle from "./AddArticle";
 import ArticleList from "./ArticleList";
+import axios from "axios";
+import servicePath from "../config/apiUrl";
 
 const { Content, Footer, Sider, Header } = Layout;
 const { SubMenu } = Menu;
@@ -33,7 +35,17 @@ function AdminIndex(props) {
   }, []);
 
   const logout = () => {
-    props.history.push("/Login");
+    axios({
+      method: "post",
+      url: servicePath.logout,
+      withCredentials: true,
+    }).then((res) => {
+      if (res.data.errno === 0) {
+        props.history.push("/Login");
+      } else {
+        message.error("Logout failed");
+      }
+    });
   }
 
   const updateSelectedKeys = (keys) => {

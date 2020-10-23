@@ -55,7 +55,17 @@ async function loginAction(ctx, userName, password) {
   return new SuccessModel();
 }
 
+/**
+ * Logout
+ * @param {Object} ctx ctx
+ */
+async function logoutAction(ctx) {
+  delete ctx.session.userInfo
+  return new SuccessModel()
+}
+
 module.exports = {
   registerAction,
   loginAction,
+  logoutAction
 };
