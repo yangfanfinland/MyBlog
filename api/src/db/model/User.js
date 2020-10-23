@@ -18,6 +18,10 @@ const User = seq.define("user", {
     type: STRING,
     allowNull: false,
     comment: "Password",
+  },
+  avatar: {
+    type: String,
+    comment: "Avatar url",
   }
 });
 

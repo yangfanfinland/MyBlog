@@ -37,6 +37,19 @@ async function registerAction({ userName, password }) {
 }
 
 /**
+ * Get user info
+ * @param {Object} ctx koa2 ctx
+ * @param {string} userName 
+ */
+async function getUserInfoAction(ctx, userName) {
+  const userInfo = await getUserInfo(userName);
+  if (!userInfo) {
+    return new ErrorModel();
+  }
+  return new SuccessModel(userInfo);
+}
+
+/**
  * User login
  * @param {Object} ctx koa2 ctx
  * @param {string} userName Username
@@ -67,5 +80,6 @@ async function logoutAction(ctx) {
 module.exports = {
   registerAction,
   loginAction,
-  logoutAction
+  logoutAction,
+  getUserInfoAction
 };

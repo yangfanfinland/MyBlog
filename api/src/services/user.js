@@ -4,6 +4,7 @@
  */
 
 const { User } = require("../db/model/index");
+const { SocialAccount } = require("../db/model/index");
 
 /**
  * Get user info
@@ -19,8 +20,14 @@ async function getUserInfo(userName, password) {
   }
 
   const result = await User.findOne({
-    attributes: ["id", "userName"],
+    attributes: ["id", "userName", "avatar"],
     where: whereOpt,
+    include: [
+      {
+        model: SocialAccount,
+        attributes: ['name', 'url', 'icon']
+      },
+    ],
   });
   if (result == null) {
     return result;
