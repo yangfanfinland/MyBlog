@@ -20,7 +20,7 @@ const User = seq.define("user", {
     comment: "Password",
   },
   avatar: {
-    type: String,
+    type: STRING,
     comment: "Avatar url",
   }
 });

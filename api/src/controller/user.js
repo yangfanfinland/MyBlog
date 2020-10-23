@@ -16,8 +16,9 @@ const doCrypto = require("../utils/cryp");
  * User register
  * @param {string} userName Username
  * @param {string} password User password
+ * @param {string} avatar User avatar
  */
-async function registerAction({ userName, password }) {
+async function registerAction({ userName, password, avatar }) {
   const userInfo = await getUserInfo(userName);
   if (userInfo) {
     // Username exits
@@ -28,6 +29,7 @@ async function registerAction({ userName, password }) {
     await createUser({
       userName,
       password: doCrypto(password),
+      avatar
     });
     return new SuccessModel();
   } catch (ex) {

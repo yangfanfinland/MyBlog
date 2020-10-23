@@ -41,10 +41,11 @@ async function getUserInfo(userName, password) {
  * @param {string} userName Username
  * @param {string} password User password
  */
-async function createUser({ userName, password }) {
+async function createUser({ userName, password, avatar }) {
   const result = await User.create({
     userName,
     password,
+    avatar
   });
   return result.dataValues;
 }

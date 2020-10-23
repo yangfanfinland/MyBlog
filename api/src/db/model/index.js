@@ -7,6 +7,7 @@ const User = require('./User')
 const Type = require('./Type')
 const Article = require('./Article')
 const SocialAccount = require('./SocialAccount')
+const Advertisement = require('./Advertisement')
 
 Article.belongsTo(Type, {
   // create foreigh key: Article.type_id -> Type.id
@@ -24,5 +25,6 @@ module.exports = {
   User,
   Type,
   Article,
-  SocialAccount
+  SocialAccount,
+  Advertisement
 }

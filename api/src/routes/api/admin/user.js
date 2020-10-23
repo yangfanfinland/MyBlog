@@ -17,10 +17,11 @@ router.post("/login", async (ctx, next) => {
 
 // User register
 router.post('/register', async (ctx, next) => {
-  const { userName, password } = ctx.request.body
+  const { userName, password, avatar } = ctx.request.body
   ctx.body = await registerAction({
     userName,
-    password
+    password,
+    avatar
   })
 })
 

@@ -15,7 +15,6 @@ import Tocify from '../components/tocify.tsx'
 import servicePath from '../config/apiUrl'
 
 export default function Detailed(props) {
-  debugger
   const tocify = new Tocify()
   const renderer = new marked.Renderer()
 

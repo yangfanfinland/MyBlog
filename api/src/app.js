@@ -16,6 +16,7 @@ const articleAdminAPIRouter = require('./routes/api/admin/article')
 const userDefaultAPIRouter = require('./routes/api/default/user')
 const typeDefaultAPIRouter = require('./routes/api/default/type')
 const articleDefaultAPIRouter = require('./routes/api/default/article')
+const advertisementDefaultAPIRouter = require('./routes/api/default/advertisement')
 
 const app = new Koa()
 app.use(cors({
@@ -75,6 +76,7 @@ app.use(articleAdminAPIRouter.routes(), articleAdminAPIRouter.allowedMethods())
 app.use(userDefaultAPIRouter.routes(), userDefaultAPIRouter.allowedMethods())
 app.use(typeDefaultAPIRouter.routes(), typeDefaultAPIRouter.allowedMethods())
 app.use(articleDefaultAPIRouter.routes(), articleDefaultAPIRouter.allowedMethods())
+app.use(advertisementDefaultAPIRouter.routes(), advertisementDefaultAPIRouter.allowedMethods())
 
 
 // error-handling
