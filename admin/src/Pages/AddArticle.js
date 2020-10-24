@@ -16,7 +16,7 @@ function AddArticle(props) {
   const [markdownContent, setMarkdownContent] = useState("Content preview");
   const [introducemd, setIntroducemd] = useState();
   const [introducehtml, setIntroducehtml] = useState("Brif introduction preview");
-  const [showDate, setShowDate] = useState();
+  const [showDate, setShowDate] = useState(moment(new Date()));
   const [typeInfo, setTypeInfo] = useState([]);
   const [selectedType, setSelectType] = useState(1);
 

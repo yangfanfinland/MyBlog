@@ -88,6 +88,16 @@ async function updateArticleAction({ id, type_id, title, article_content, introd
   }
 }
 
+async function updateArticleViewCount(id, view_count) {
+  try {
+    await updateArticle({ id, view_count })
+  } catch (error) {
+    console.error(error)
+  }
+
+  // No need return SuccessModel or ErrorModel
+}
+
 /**
  * Delete article
  * @param {int} id 
@@ -106,5 +116,6 @@ module.exports = {
   getArticleByIdAction,
   addArticleAction,
   updateArticleAction,
+  updateArticleViewCount,
   delArticleAction
 };

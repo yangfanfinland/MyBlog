@@ -4,7 +4,7 @@
  */
 
 const router = require("koa-router")();
-const { getArticleListAction, getArticleListByTypeIdAction, getArticleByIdAction } = require("../../../controller/article");
+const { getArticleListAction, getArticleListByTypeIdAction, getArticleByIdAction, updateArticleViewCount } = require("../../../controller/article");
 
 router.prefix("/api/default/article");
 
@@ -22,7 +22,13 @@ router.get("/getArticleListByTypeId/:id", async (ctx, next) => {
 // Get article by id
 router.get("/getArticleById/:id", async (ctx, next) => {
   const { id } = ctx.params
-  ctx.body = await getArticleByIdAction(id);
+  const result = await getArticleByIdAction(id);
+
+  ctx.body = result
+
+  let { view_count } = result.data;
+  view_count = view_count + 1;
+  await updateArticleViewCount(id, view_count);
 });
 
 module.exports = router;
