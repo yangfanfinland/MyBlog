@@ -19,6 +19,7 @@ function AddArticle(props) {
   const [showDate, setShowDate] = useState(moment(new Date()));
   const [typeInfo, setTypeInfo] = useState([]);
   const [selectedType, setSelectType] = useState(1);
+  const [viewCount, setViewCount] = useState(0)
 
   useEffect(() => {
     getTypeInfo();
@@ -116,6 +117,7 @@ function AddArticle(props) {
       });
     } else {
       dataProps.id = articleId;
+      dataProps.view_count = viewCount;
       axios({
         method: "POST",
         url: servicePath.updateArticle,
@@ -144,6 +146,7 @@ function AddArticle(props) {
         setIntroducehtml(tmpIntroduce)
         setShowDate(articleInfo.addTime)
         setSelectType(articleInfo.type_id)
+        setViewCount(articleInfo.view_count)
       }
     )
   }
