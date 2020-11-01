@@ -22,10 +22,11 @@ const app = new Koa()
 app.use(cors({
   origin: (e) => {
     const origin = e.request.header.origin
-    const whiteList = ['http://127.0.0.1:3000', 'http://127.0.0.1:3001']
-    if (whiteList.indexOf(origin) > -1) {
-      return origin;
-    }
+    // const whiteList = ['http://127.0.0.1:3000', 'http://127.0.0.1:3001', 'http://127.0.0.1:3002', 'http://127.0.0.1:3003']
+    // if (whiteList.indexOf(origin) > -1) {
+    //   return origin;
+    // }
+    return origin;
   },
   credentials: true
 }));
